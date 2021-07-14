@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script>
+    if (window.location.host.lastIndexOf('github.io') > -1) {
+      window.location.replace('https://iagml.netlify.com/admin')
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    function getFilename(path) {
+      if (!path) {
+        return ''
+      }
+
+      const file = path.split('/').pop()
+      const filename = file.slice(0, file.lastIndexOf('.'))
+      console.log('Filename: ', filename, file)
+      return filename
+    }
+
+    function getFilenameWithExtension(path) {
+      if (!path) return '';
+
+      const file = path.split('/').pop()
+      return file
+    }
+
+    CMS.registerPreviewStyle('/assets/css/cms-preview.css')
+
+    CMS.registerEditorComponent({
+      // Internal id of the component
+      id: "jupyter_notebook",
+      // Visible label
+      label: "Jupyter Notebook",
+      // Fields the user need to fill out when adding an instance of the component
+      fields: [{ name: 'id', label: 'Filename', widget: 'file' }],
+      // Pattern to identify a block as being an instance of this component
+      // From markdown to block
+      pattern: /^{{\s*?"([\w\s\(\)-.]*)"\s*?\|\s*?notebook\s*?}}$/,
+      // Function to extract data elements from the regexp match
+      // From markdown to block
+      fromBlock: function (match) {
+        return {
+          id: '/assets/uploads/' + match[1] + '.ipynb'
+        }
+      },
+      // Function to create a text block from an instance of this component
+      // From block to markdown
+      toBlock: function (obj) {
+        return '{{ "' + getFilename(obj.id) + '" | notebook }}';
+      },
+      // Preview output for this component. Can either be a string or a React component
+      // (component gives better render performance)
+      toPreview: function (obj) {
+        return (
+          '<div class="notebook">'
+          + 'Your jupyter notebook ' + getFilename(obj.id) + '<br>will be rendered here'
+          + '</div>'
+        );
+      }
+    });
+
+    CMS.registerEditorComponent({
+      // Internal id of the component
+      id: "inline_pdf",
+      label: "PDF",
+      fields: [{ name: 'id', label: 'Filename', widget: 'file' }],
+      // Pattern to identify a block as being an instance of this component
+      // From markdown to block
+      pattern: /^{{\s*?"([\w\s\(\)-.]*)"\s*?\|\s*?pdf\s*?}}$/,
+      // Function to extract data elements from the regexp match
+      // From markdown to block
+      fromBlock: function (match) {
+        return {
+          id: '/assets/uploads/' + match[1]
+        }
+      },
+      // Function to create a text block from an instance of this component
+      // From block to markdown
+      toBlock: function (obj) {
+        return '{{ "' + getFilenameWithExtension(obj.id) + '" | pdf }}';
+      },
+      toPreview: function (obj) {
+        return (
+          '<div class="notebook">'
+          + 'Your pdf ' + getFilenameWithExtension(obj.id) + ' will be inserted here'
+          + '</div>'
+        );
+      }
+    });
+  </script>
+</body>
+
+</html>

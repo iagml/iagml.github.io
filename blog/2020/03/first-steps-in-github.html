@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="dns-prefetch" href="https://github.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/vendor/fa-5.10.2/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/app.css?v=1626222211">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Spectral&display=swap" rel="stylesheet">
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>First steps in GitHub | IAGML</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="First steps in GitHub" />
+<meta name="author" content="natalidesanti" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="All steps below are for passionate by terminal on Linux operational system. This tutorial is also available in GitHub. Step 1 - What is GitHub? GitHub is a code hosting platform for version control and collaboration using git. It lets you and others work alone or together on projects from anywhere. Git is a distributed version-control system for tracking changes in source code during it development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity and support for distributed non-linear workflows." />
+<meta property="og:description" content="All steps below are for passionate by terminal on Linux operational system. This tutorial is also available in GitHub. Step 1 - What is GitHub? GitHub is a code hosting platform for version control and collaboration using git. It lets you and others work alone or together on projects from anywhere. Git is a distributed version-control system for tracking changes in source code during it development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity and support for distributed non-linear workflows." />
+<link rel="canonical" href="https://iagml.github.io/blog/2020/03/first-steps-in-github" />
+<meta property="og:url" content="https://iagml.github.io/blog/2020/03/first-steps-in-github" />
+<meta property="og:site_name" content="IAGML" />
+<meta property="og:image" content="https://iagml.github.io/assets/uploads/github-logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-24T11:27:57-03:00" />
+<script type="application/ld+json">
+{"headline":"First steps in GitHub","dateModified":"2020-03-24T11:27:57-03:00","description":"All steps below are for passionate by terminal on Linux operational system. This tutorial is also available in GitHub. Step 1 - What is GitHub? GitHub is a code hosting platform for version control and collaboration using git. It lets you and others work alone or together on projects from anywhere. Git is a distributed version-control system for tracking changes in source code during it development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity and support for distributed non-linear workflows.","datePublished":"2020-03-24T11:27:57-03:00","@type":"BlogPosting","image":"https://iagml.github.io/assets/uploads/github-logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://iagml.github.io/blog/2020/03/first-steps-in-github"},"url":"https://iagml.github.io/blog/2020/03/first-steps-in-github","author":{"@type":"Person","name":"natalidesanti"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="stylesheet" href="/assets/vendor/pygments-css/native.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light static-top navbar-expand-lg py-3">
+  <div class="container">
+    <a class="navbar-brand w-600" href="/">
+      <img src="/assets/img/iag_logo_black.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      IAGML
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/projeto/">Projeto</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/recursos/">Recursos</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/surveys/">Surveys</a>
+        </li>
+        
+        <li class="nav-item 
+                   
+                    active
+                  ">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/admin/">Área de Membros</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="site-wrapper">
+    <header class="masthead text-white text-shadow inner-shadow" 
+  style="background-image: url('/assets/uploads/github-logo.png')" >
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9">
+        
+        <h1 >First steps in GitHub</h1>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container pt-3 pb-5 post-content">
+  <div class="pb-5 d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <a href="/authors/natalidesanti">
+        
+
+
+<img src="https://github.com/natalidesanti.png?size=50" class="rounded-circle"
+  width="50" />
+
+
+      </a>
+      <span class="pl-3"><a class="post-author" href="/authors/natalidesanti">Natalí de Santi</a></span>
+    </div>
+    <div>
+      <span class="small"><i class="far fa-calendar-alt"></i> 24 Mar 2020</span>
+    </div>
+  </div>
+
+  <p>All steps below are for passionate by terminal on <strong>Linux</strong> operational system. This tutorial is also available in <a href="https://github.com/natalidesanti/first_steps_in_github">GitHub</a>.</p>
+
+<h2 id="step-1---what-is-github">Step 1 - What is GitHub?</h2>
+
+<p><strong>GitHub</strong> is a code hosting platform for version control and collaboration using <strong>git</strong>. It lets you and others work alone or together on projects from anywhere.</p>
+
+<p><strong>Git</strong> is a distributed version-control system for tracking changes in source code during it development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity and support for distributed non-linear workflows.</p>
+
+<!--more-->
+
+<p><img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" alt="github logo" /></p>
+
+<h2 id="step-2---creating-a-github-account">Step 2 - Creating a GitHub account</h2>
+
+<p>To start your experience on <strong>GitHub</strong> you need to make an account on: <a href="https://github.com">https://github.com</a>. You will just need to inform your <code class="highlighter-rouge">e-mail</code> account, choose an <code class="highlighter-rouge">username</code> and create a <code class="highlighter-rouge">password</code>.</p>
+
+<h2 id="step-3---installing-git-in-your-computer">Step 3 - Installing git in your computer</h2>
+
+<p>You need to install <strong>git</strong> in your computer. If you are using <strong>Ubuntu</strong> you just need to run <code class="highlighter-rouge">OS</code> and package updates:</p>
+
+<p><code class="highlighter-rouge">$ sudo apt-get update</code></p>
+
+<p>And install <strong>git</strong> giving the following command:</p>
+
+<p><code class="highlighter-rouge">$ sudo apt-get install git-core</code></p>
+
+<p>You may be asked to confirm the download and installation. <strong>Git</strong> should be installed and ready to use. If you can confirm it you can just run the <strong>git</strong> version command:</p>
+
+<p><code class="highlighter-rouge">$ git --version</code></p>
+
+<p>Mine is:</p>
+
+<p><code class="highlighter-rouge">$ git version 2.17.1</code>.</p>
+
+<h2 id="step-4---creating-a-repository">Step 4 - Creating a repository</h2>
+
+<p>After creating an account you need to start a first (or new) <strong>repository</strong> on <strong>GitHub</strong>. A repository is usually used to organize a <strong>project</strong>. Repositories can contain anything your project needs: folders, files, images, videos, data sets, etc. If the project is not only your, or even if you can think to share it with anyone, it is recommended to include a <code class="highlighter-rouge">README</code>, i.e, a file with information about your project. You can also include a <code class="highlighter-rouge">license file</code> to your project.</p>
+
+<p>You can create your repository in the <strong>GitHub</strong> <a href="https://github.com">site</a>, giving to it the following features:</p>
+
+<ul>
+  <li>Name: <code class="highlighter-rouge">project_name</code>.</li>
+  <li>Description: <code class="highlighter-rouge">This project has the objective to...</code>.</li>
+  <li>Privacy: <code class="highlighter-rouge">public</code> (anyone can see this repository, but you can choose who can commit) or <code class="highlighter-rouge">private</code> (you choose to see and commit to this repository).</li>
+</ul>
+
+<p>Then, you need to to start a first (or new) repository giving, inside the directory, in your computer, chosen by you, the command:</p>
+
+<p><code class="highlighter-rouge">$ git init</code></p>
+
+<p>Now you need to say who you are for your <strong>git</strong>. Write in the terminal:</p>
+
+<p><code class="highlighter-rouge">$ git config --global user.email &lt;you@example.com&gt;</code></p>
+
+<p><code class="highlighter-rouge">$ git config --global user.name &lt;your_name&gt;</code></p>
+
+<p>You need to pay attention that <code class="highlighter-rouge">--global</code> means that you are using <strong>git</strong> on your computer. If you omit this option you are logging in only on the local folder.</p>
+
+<p>If you want to see the user and the configuration of your <strong>git</strong>, write in the terminal:</p>
+
+<p><code class="highlighter-rouge">$ nano ~/.gitconfig</code></p>
+
+<p>and the information will be displayed in nano environment like:</p>
+
+<p><code class="highlighter-rouge">[user]</code></p>
+
+<pre>email = you@example.com</pre>
+
+<pre>name = your_name</pre>
+
+<p><code class="highlighter-rouge">[user\_name]</code></p>
+
+<pre>email = you@example.com</pre>
+
+<pre>name = your_name</pre>
+
+<p>Press <code class="highlighter-rouge">Ctrl + X</code> to quit this environment.</p>
+
+<h2 id="step-5---including-files-in-your-repository">Step 5 - Including files in your repository</h2>
+
+<p>You need to add the files you wish to keep your changes on <strong>git</strong> giving the command:</p>
+
+<p><code class="highlighter-rouge">$ git add &lt;file_name&gt;</code></p>
+
+<p>Remember that, in other times (beyond the first one), when you are adding the changes you need to write <code class="highlighter-rouge">stage</code>, instead <code class="highlighter-rouge">add</code>, in the command above, like:</p>
+
+<p><code class="highlighter-rouge">$ git stage &lt;file_name&gt;</code></p>
+
+<h2 id="step-6---committing">Step 6 - Committing</h2>
+
+<p>On <strong>GitHub</strong>, saved changes are called <strong>commits</strong>. Each commit has an associated <strong>commit message</strong>, which is a description explaining why a particular change was made. Commit messages capture the history of your changes, so you and other contributors can understand what you’ve done and why.</p>
+
+<p>After adding/staging you need to commit it:</p>
+
+<p><code class="highlighter-rouge">$ git commit -m ''&lt;message&gt;''</code></p>
+
+<p>You can do as many commits as you want, giving the command above and writing a message to warn you about your changes, in same documents, or about new documents added in your repository.</p>
+
+<h2 id="step-7---uploading-you-files-and-changes-into-github">Step 7 - Uploading you files and changes into GitHub</h2>
+
+<p>It’s time to upload your <strong>git</strong> on <strong>GitHub</strong>. Now you need to log in on <strong>GitHub</strong> site, access your project and upload your <strong>git</strong> giving the commands sequence:</p>
+
+<p><code class="highlighter-rouge">$ git remote add origin https://github.com/user/project_name.git</code></p>
+
+<p><code class="highlighter-rouge">$ git push -u origin master</code></p>
+
+<p><strong>GitHub</strong> will ask for your <code class="highlighter-rouge">username</code> and <code class="highlighter-rouge">password</code>:</p>
+
+<p><code class="highlighter-rouge">Username for 'https://github.com': username</code></p>
+
+<p><code class="highlighter-rouge">Password for 'https://username@github.com': password</code></p>
+
+<p>And then, you can see which files and commits were upload by you:</p>
+
+<p><code class="highlighter-rouge">Counting objects: N, done.</code></p>
+
+<p><code class="highlighter-rouge">Delta compression using up to M threads.</code></p>
+
+<p><code class="highlighter-rouge">Compressing objects: 100\% (N/N), done.</code></p>
+
+<p><code class="highlighter-rouge">Writing objects: 100\% (O/O), 1.46 KiB | 374.00 KiB/s, done.</code></p>
+
+<p><code class="highlighter-rouge">Total N (delta 0), reused 0 (delta 0)</code></p>
+
+<p><code class="highlighter-rouge">To https://github.com/username/project_name.git</code></p>
+
+<p><code class="highlighter-rouge">* [new branch]      master -&gt; master</code></p>
+
+<p><code class="highlighter-rouge">Branch 'master' set up to track remote branch 'master' from 'origin'.</code></p>
+
+<p>The <strong>git</strong>’s magic works in this way: you create or add some files, modify them, commit your changes and upload the files on <strong>GitHub</strong>. But there is a lot more!</p>
+
+<h2 id="step-8---creating-a-branch">Step 8 - Creating a branch</h2>
+
+<p>Now you need to know that all that you have done above was made in the <code class="highlighter-rouge">master</code> branch. Ops, what I’m talking about?</p>
+
+<p><strong>Branching</strong> is the way to work on different versions of a repository at one time. By default your repository has one <code class="highlighter-rouge">branch</code> named <strong>master</strong> which is considered to be the <em>definitive branch</em>. We use branches to experiment and make edits before committing them to <code class="highlighter-rouge">master</code>. In other words, in <strong>git</strong> you can have a tree history of your code. As a tree you have not only one, but a lot of branches. In the branches you can do changes in your files, save them and use it in your <code class="highlighter-rouge">master</code> branch as you want.</p>
+
+<p>When you create a branch off the <code class="highlighter-rouge">master</code> branch, you’re making a copy of master as it was at that point in time. If someone else made changes to the master branch while you were working on your branch, you could <strong>pull</strong> in those updates. But it is a story that I will tell to you in the next steps.</p>
+
+<p>First, we are going to create a branch:</p>
+
+<p><code class="highlighter-rouge">$ git branch &lt;name_of_branch&gt;</code></p>
+
+<p>Second, you need to get to that branch:</p>
+
+<p><code class="highlighter-rouge">$ git checkout &lt;name_of_branch&gt;</code></p>
+
+<p>Then, you can stage, commit and push files to that branch, using the same commands used right above. Just notice that, when you do your <code class="highlighter-rouge">push</code> you just need to change <code class="highlighter-rouge">master</code> by your current brunch <code class="highlighter-rouge">name_of_branch</code>:</p>
+
+<p><code class="highlighter-rouge">$ git push -u origin &lt;name_of_branch&gt;</code></p>
+
+<p>You can add as many branches as you want, like direct and different branches from <code class="highlighter-rouge">main</code> or even branches starting in other branches. Just remember that, for each branch that you create, the files in that branch will be the same ones in the previous branch as you start your modifications and commits on it.</p>
+
+<p>You can see all branches of your project writing in the terminal:</p>
+
+<p><code class="highlighter-rouge">$ git branch</code></p>
+
+<p>and the present branch that you are working in will be presented with a * at the left side as:</p>
+
+<p><code class="highlighter-rouge">* master</code></p>
+
+<p><code class="highlighter-rouge">branch 1</code></p>
+
+<p><code class="highlighter-rouge">branch 2</code></p>
+
+<p><code class="highlighter-rouge">branch 3</code></p>
+
+<p>If you want to delete some branch you just need to write:</p>
+
+<p><code class="highlighter-rouge">$ git branch -d &lt;name_of_branch&gt;.</code></p>
+
+<h2 id="step-9---merging">Step 9 - Merging</h2>
+
+<p>As I have described in the previous step, after all changes and commits in your branch, you can put the modifications in the <code class="highlighter-rouge">main</code> one. You just need to <code class="highlighter-rouge">merge</code> the main with the branch that you are using. Thus, in the main branch you can give the line command:</p>
+
+<p><code class="highlighter-rouge">$ git merge name_of_branch</code></p>
+
+<p>Finally, you have the <code class="highlighter-rouge">main</code> branch completely changed by your other branch changes!</p>
+
+<p><img src="https://guides.github.com/activities/hello-world/branching.png" alt="branching" /></p>
+
+<p>Pay attention that, the command <code class="highlighter-rouge">merge</code>, merges the branch that you are in with the other branch you chose, i. e., you can add the changes of the chosen branch in the branch that you are in, and not just for the <code class="highlighter-rouge">main</code> branch and the other one desired branch.</p>
+
+<p>If you need to verify in which branch you are, what files were be uploaded or not and how they are in your <strong>GitHub</strong>’s page, you can just write in the terminal:</p>
+
+<p><code class="highlighter-rouge">$ git status</code>.</p>
+
+<h2 id="step-10---pull-requests">Step 10 - Pull Requests</h2>
+
+<p><strong>Pull Requests</strong> are the heart of collaboration on <strong>GitHub</strong>. When you open a pull request, you’re proposing your changes and requesting that someone, really anyone, review and pull in your contribution and merge them into their branch. Pull requests show diffs, or differences, of the content from both branches. The changes, additions, and subtractions are shown in <strong>green</strong> and <strong>red</strong> in your <strong>GitHub</strong>’s page.</p>
+
+<p>As soon as you make a commit, you can open a pull request and start a discussion, even before the code is finished.</p>
+
+<p>By using <strong>GitHub</strong>’s <code class="highlighter-rouge">@mention</code> system in your pull request message, you can ask for feedback from specific people or teams.</p>
+
+<p>You can even open pull requests in your own repository and merge them yourself. It’s a great way to learn the <strong>GitHub</strong> flow before working on larger projects.</p>
+
+<p>Again, there is a lot of other things to do on <strong>git</strong> and <strong>GitHub</strong>.</p>
+
+<h2 id="step-11---changing">Step 11 - Changing</h2>
+
+<p>If you are using <strong>git</strong> you certainly will do changes in your project. Then, you can use the following commands:</p>
+
+<ul>
+  <li>To show the differences in file that are not realized yet: <code class="highlighter-rouge">$ git diff</code>;</li>
+  <li>To show the differences in staged files and its last versions: <code class="highlighter-rouge">$ git diff --staged</code>;</li>
+  <li>Unselect the file, preserving its content: <code class="highlighter-rouge">$ git reset &lt;file_name&gt;</code>;</li>
+  <li>To remove the file: <code class="highlighter-rouge">$ git rm &lt;file_name&gt;</code>;</li>
+  <li>To remove the file, preserving it locally: <code class="highlighter-rouge">$ git rm --cached &lt;file_name&gt;</code>;</li>
+  <li>To change the file name and to select it to a new commit: <code class="highlighter-rouge">$ git mv &lt;original_file_name&gt; &lt;new_file_name&gt;</code>;</li>
+  <li>Undo all commits after the specified commit, keeping the local changes: <code class="highlighter-rouge">$ git reset &lt;commit&gt;</code>;</li>
+  <li>Discards every history and changes for the specified commit: <code class="highlighter-rouge">$ git reset --hard &lt;commit&gt;</code>.</li>
+</ul>
+
+<h2 id="step-12---saving-fragments">Step 12 - Saving fragments</h2>
+
+<p>You can still save and restoring incomplete changes using:</p>
+
+<ul>
+  <li>Keeps, temporally, all modified files: <code class="highlighter-rouge">$ git stash</code>;</li>
+  <li>Restores all recent files that have been stashed: <code class="highlighter-rouge">$ git stash pop</code>;</li>
+  <li>List all changes in stash: <code class="highlighter-rouge">$ git stash list</code>;</li>
+  <li>Discards every recent settle of changes in stash: <code class="highlighter-rouge">$ git stash drop</code>.</li>
+</ul>
+
+<h2 id="step-13---reviewing-history">Step 13 - Reviewing history</h2>
+
+<p>You can make a review of the evolution of all files in some <strong>git</strong> project using:</p>
+
+<ul>
+  <li>List the versions history in the local branch: <code class="highlighter-rouge">$ git log</code>;</li>
+  <li>List the history versions for specific file, including name alterations: <code class="highlighter-rouge">$ git log --follow &lt;file_name&gt;</code>;</li>
+  <li>Show the differences between the content among two branches: <code class="highlighter-rouge">$ git diff &lt;first_branch&gt; $\dots$ &lt;second_branch&gt;</code>;</li>
+  <li>Show the changes in the metadata and content for the specif commit: <code class="highlighter-rouge">$ git show &lt;commit&gt;</code>.</li>
+</ul>
+
+<h2 id="step-14---forkingcloning-a-repository">Step 14 - Forking/Cloning a repository</h2>
+
+<p>If you are surfing into <strong>GitHub</strong>’s site and find a great project that you like you can <strong>fork/clone</strong> it for you. Then, you will have this repo into your computer to run, to modify and to do whatever you want without affecting the original project. To fork/clone some repo you need to follow two steps:</p>
+
+<h3 id="forking">Forking:</h3>
+
+<p>Navigate until the <strong>GitHub</strong> project that you liked and, in the top-right corner of the page, click <strong>Fork</strong>!</p>
+
+<h3 id="cloning">Cloning:</h3>
+
+<p>To be ``connected’’ with that repo and receive the last actualization’s of it, when the owner do some modifications, i.e., to keep your fork synced, you just need to write in the terminal:</p>
+
+<p><code class="highlighter-rouge">$ git clone &lt;link&gt;</code>.</p>
+
+<p>This command do the download of the project with its complete historic version. As a simple example, you can clone this tutorial writing:</p>
+
+<p><code class="highlighter-rouge">$ git clone &lt;https://github.com/natalidesanti/first_steps_on_github&gt;</code>.</p>
+
+<p>Remember to clone some repo in some location that you want into your computer.</p>
+
+<p>If you have interest to make a pull request in this repo you can give a:</p>
+
+<p><code class="highlighter-rouge">$ git pull</code></p>
+
+<p>to see the last alterations into this repo before proceed to make your pull request!</p>
+
+<h2 id="acknowledgments-and-references">Acknowledgments and references</h2>
+
+<p>To write the <strong>First steps in GitHub</strong> I really appreciate the Nícolas Morazotti (<a href="https://github.com/Morazotti">@Morazotti</a>) help, Patricia Novais (<a href="https://github.com/pnovais">@pnovais</a>) tutorial, the <a href="https://guides.github.com/activities/hello-world/">Hello World</a> project and the Wikipedia pages for <a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a> and <a href="https://en.wikipedia.org/wiki/Git">git</a>.</p>
+
+
+  <div class="mt-4 py-5">
+    <div id="disqus_thread"></div>
+<script>
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://iagml.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+  </div>
+</div>
+
+  </div>
+
+  <footer class="text-light">
+  <div class="container px-4 px-md-0">
+    <div class="row">
+      <div class="col-12 col-md-6 pr-lg-5">
+        <h6>IAGML</h6>
+        <p>
+          Sistemas inteligentes para descoberta em Astronomia:
+          Inteligência Artificial
+          para a extração de informações
+          em grandes levantamentos do céu (surveys).
+        </p>
+
+        <h6 class="mt-4">Apoio</h6>
+        <ul class="list-unstyled list-inline footer-logos">
+          <li class="list-inline-item">
+            <a href="http://www.iag.usp.br">
+              <img class="hover-img" src="/assets/img/iag_logo.png" data-toggle="tooltip" height="42px" alt="IAG Logo"
+                title="Instituto de Astronomia, Geofísica e Ciências Atmosféricas">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="http://prp.usp.br">
+              <img class="hover-img" src="/assets/img/prp_logo.png" data-toggle="tooltip" height="42px" alt="PRP Logo"
+                title="Pró Reitoria de Pesquisa">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="http://usp.br">
+              <img class="hover-img" src="/assets/img/usp_logo.png" data-toggle="tooltip" height="42px" alt="USP Logo"
+                title="Universidade de São Paulo">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-4 col-md-3">
+        <h6>Explore</h6>
+        <ul class="list-unstyled">
+          
+          <li><a href="/projeto/">Projeto</a></li>
+          
+          <li><a href="/recursos/">Recursos</a></li>
+          
+          <li><a href="/surveys/">Surveys</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/admin/">Área de Membros</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-8 col-md-3">
+        <h6>Contato</h6>
+        <p class="text-sm ">
+          IAG - Instituto de Astronomia, Geofísica e Ciências Atmosféricas <br>
+          Universidade de São Paulo <br>
+          Rua do Matão, 1226 <br>
+          Cidade Universitária <br>
+          São Paulo - SP <br>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid footer-line text-center">
+    <small>
+      &copy; 2019-2021 <a href="http://www.iag.usp.br">IAG/USP</a> &bull;
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> <br />
+      Last build: 13/07/2021 21:23:31
+      
+      
+      &bull; Commit:
+      <a href="https://github.com/iagml/website/commit/04377b123a364e5c512ce1acbe307a4a2e57fb9b">04377b12</a>
+      <a href="https://github.com/iagml/website"><i class="fab fa-github"></i></a>
+      
+    </small>
+  </div>
+</footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+
+</html>

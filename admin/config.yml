@@ -1,0 +1,112 @@
+backend:
+  # name: test-repo
+  name: github
+  repo: iagml/website
+  branch: master
+media_folder: 'assets/uploads'
+collections:
+  - name: 'posts'
+    label: 'Posts'
+    label_singular: 'Post'
+    folder: '_posts/'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: true
+    fields:
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+      - label: 'Publish Date'
+        name: 'date'
+        widget: 'datetime'
+      - label: 'Header Image'
+        name: 'image'
+        widget: 'image'
+        media_library:
+          config:
+            multiple: false
+      - label: 'Author'
+        name: 'author'
+        widget: 'relation'
+        collection: 'authors'
+        displayFields: [display_name]
+        searchFields: [username, display_name]
+        valueField: 'username'
+      - label: 'Tags'
+        name: 'tags'
+        widget: 'relation'
+        collection: 'tagslist'
+        displayFields: [name]
+        searchFields: [name]
+        valueField: 'name'
+        default: []
+        multiple: true
+        required: false
+      - label: 'Body'
+        name: 'body' 
+        widget: 'markdown'
+  - name: 'pages'
+    label: 'Pages'
+    label_singular: 'Page'
+    folder: '_pgs/'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: true
+    fields:
+      - label: 'Layout'
+        name: 'layout'
+        widget: 'hidden'
+        default: 'page'
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+      - label: 'Header Image'
+        name: 'image'
+        widget: 'image'
+        media_library:
+          config:
+            multiple: false
+      - label: 'Body'
+        name: 'body'
+        widget: 'markdown'
+  - name: 'authors'
+    label: 'Authors'
+    label_singular: 'Author'
+    identifier_field: username
+    folder: '_authors/'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - label: 'IAGML Username'
+        name: 'username'
+        widget: 'string'
+        hint: "The name used to identify you on the site. Use the same username as github if you have an account or create a new username if you don't. Don't use space, punctuation or special characters"
+      - label: 'Github Username'
+        name: 'github_username'
+        widget: 'string'
+        required: false
+        hint: 'Your github username.'
+      - label: 'Diplay Name'
+        name: 'display_name'
+        widget: 'string'
+        hint: 'The name that will be shown to readers of the site.'
+      - label: 'Description'
+        name: 'body'
+        required: false
+        hint: 'Short description about you, like social media links and qualification. Will be visible on your author page.'
+        widget: 'markdown'
+  - name: 'tagslist'
+    label: 'Tags'
+    label_singular: 'Tag'
+    identifier_field: name
+    folder: '_tagslist/'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - label: 'Tag Name'
+        name: name
+        widget: 'string'

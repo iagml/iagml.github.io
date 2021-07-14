@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="dns-prefetch" href="https://github.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/vendor/fa-5.10.2/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/app.css?v=1626222211">
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Spectral&display=swap" rel="stylesheet">
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Automatizando o download de imagens do SDSS | IAGML</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Automatizando o download de imagens do SDSS" />
+<meta name="author" content="nmcardoso" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introdução Uma das primeiras etapas para resolução de um problema de machine learning é a obtenção dos dados para treinar o modelo. Mas nem sempre os dados estão disponíveis de forma simples. Além disso, como é envolvido grande número de dados, muitas vezes é necessária a obtenção automatizada desses dados. Neste artigo será comentada formas de fazer download de grande quantidade de imagens do SDSS por um script." />
+<meta property="og:description" content="Introdução Uma das primeiras etapas para resolução de um problema de machine learning é a obtenção dos dados para treinar o modelo. Mas nem sempre os dados estão disponíveis de forma simples. Além disso, como é envolvido grande número de dados, muitas vezes é necessária a obtenção automatizada desses dados. Neste artigo será comentada formas de fazer download de grande quantidade de imagens do SDSS por um script." />
+<link rel="canonical" href="https://iagml.github.io/blog/2019/11/automatizando-download-de-imagens-do-sdss" />
+<meta property="og:url" content="https://iagml.github.io/blog/2019/11/automatizando-download-de-imagens-do-sdss" />
+<meta property="og:site_name" content="IAGML" />
+<meta property="og:image" content="https://iagml.github.io/assets/uploads/galaxy_grid.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-11T00:00:00-03:00" />
+<script type="application/ld+json">
+{"headline":"Automatizando o download de imagens do SDSS","dateModified":"2019-11-11T00:00:00-03:00","description":"Introdução Uma das primeiras etapas para resolução de um problema de machine learning é a obtenção dos dados para treinar o modelo. Mas nem sempre os dados estão disponíveis de forma simples. Além disso, como é envolvido grande número de dados, muitas vezes é necessária a obtenção automatizada desses dados. Neste artigo será comentada formas de fazer download de grande quantidade de imagens do SDSS por um script.","datePublished":"2019-11-11T00:00:00-03:00","@type":"BlogPosting","image":"https://iagml.github.io/assets/uploads/galaxy_grid.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://iagml.github.io/blog/2019/11/automatizando-download-de-imagens-do-sdss"},"url":"https://iagml.github.io/blog/2019/11/automatizando-download-de-imagens-do-sdss","author":{"@type":"Person","name":"nmcardoso"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="stylesheet" href="/assets/vendor/pygments-css/native.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light static-top navbar-expand-lg py-3">
+  <div class="container">
+    <a class="navbar-brand w-600" href="/">
+      <img src="/assets/img/iag_logo_black.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      IAGML
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/projeto/">Projeto</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/recursos/">Recursos</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/surveys/">Surveys</a>
+        </li>
+        
+        <li class="nav-item 
+                   
+                    active
+                  ">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        
+        <li class="nav-item 
+                  ">
+          <a class="nav-link" href="/admin/">Área de Membros</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="site-wrapper">
+    <header class="masthead text-white text-shadow inner-shadow" 
+  style="background-image: url('/assets/uploads/galaxy_grid.jpg')" >
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9">
+        
+        <h1 >Automatizando o download de imagens do SDSS</h1>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container pt-3 pb-5 post-content">
+  <div class="pb-5 d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <a href="/authors/nmcardoso">
+        
+
+
+<img src="https://github.com/nmcardoso.png?size=50" class="rounded-circle"
+  width="50" />
+
+
+      </a>
+      <span class="pl-3"><a class="post-author" href="/authors/nmcardoso">Natanael M Cardoso</a></span>
+    </div>
+    <div>
+      <span class="small"><i class="far fa-calendar-alt"></i> 11 Nov 2019</span>
+    </div>
+  </div>
+
+  <h1 id="introdução">Introdução</h1>
+
+<p>Uma das primeiras etapas para resolução de um problema de machine learning é a obtenção dos dados para treinar o modelo. Mas nem sempre os dados estão disponíveis de forma simples. Além disso, como é envolvido grande número de dados, muitas vezes é necessária a obtenção automatizada desses dados. Neste artigo será comentada formas de fazer download de grande quantidade de imagens do SDSS por um script.</p>
+
+<!--more-->
+
+<h2 id="como-o-sdss-disponibiliza-suas-imagens">Como o SDSS disponibiliza suas imagens?</h2>
+
+<p>A forma mais comum de acessar o catálogo de imagens do SDSS é pela página do <a href="https://skyserver.sdss.org/dr15/en/tools/chart/list.aspx">SkyServer</a>, que é uma interface gráfica de usuário (<a href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a>), ou seja, um método onde há interação do usuário com o sistema de forma visual. Mas além da interface de usuário, o SDSS disponibiliza uma interface de programação de aplicação (<a href="https://en.wikipedia.org/wiki/Application_programming_interface">API</a>), que é uma forma do <a href="https://en.wikipedia.org/wiki/Server_(computing)">servidor</a> se comunicar diretamente com outro programa (<a href="https://en.wikipedia.org/wiki/Client_(computing)">cliente</a>).</p>
+
+<p>A API do SDSS está documentada <a href="http://skyserver.sdss.org/dr15/en/help/docs/api.aspx">nesta página</a>. Ela disponibiliza mais dados além de images, mas aqui veremos como usá-la para obter imagens.</p>
+
+<h2 id="como-funciona-uma-api">Como funciona uma API?</h2>
+
+<p>Simplificadamente, o funcionamento de uma API é análogo ao de uma função. A diferença é que você não está invocando uma função do seu programa, mas de um outro programa, escrito em outra linguagem e executado em outro computador. Sendo assim, você precisa chamar essa função pela internet.</p>
+
+<p><em>Mas como é possível executar uma função escrita em outra linguagem e executando em outro computador?</em> Isso é possível porque os programas que são projetados para comunicar com outros programas usam um padrão de comunicação. No caso do SDSS, é implementada uma arquitetura de software chamada <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, que é uma das mais comuns usadas para esta finalidade.</p>
+
+<p>Os programas que se comunicam por uma API REST usam o protocolo <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> para trocar informações. Assim, para que um programa executar uma determinada função no servidor, basta que acesse uma <a href="https://en.wikipedia.org/wiki/URL">URL</a>. Cada URL do servidor representa uma função, que também pode ser chamada de <a href="https://en.wikipedia.org/wiki/Web_API#Endpoints">endpoint</a>.</p>
+
+<h2 id="mecanismo-de-uma-api">Mecanismo de uma API</h2>
+
+<p><img src="https://idratherbewritingmedia.com/images/api/restapi_restapi.svg" width="600px" style="max-width:100%;" class="mx-auto d-block" /></p>
+
+<p>No exemplo ilustrado pelo diagama acima, vemos um programa escrito em <a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)">Ruby</a> se comunicando com um servidor escrito em <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>. Este diagrama mostra as principais características de uma comunicação REST. Vemos que ela é constituída de dois principais eventos: a <strong>requisição</strong> (Request) e a <strong>resposta</strong> (Response).</p>
+
+<p>Na requisição, observamos que a aplicação acessa uma URI do servidor. A primeira parte da URI <code class="highlighter-rouge">http://coolhomes.api.com</code> é chamada de caminho base (<em>base path</em>) e a segunda parte <code class="highlighter-rouge">/home?limit=5</code> é a <em>rota</em>. Na rota, o que vemos antes da interrogação é seu nome e depois são seus parâmetros. O <em>endpoint</em> é o ponto final de um canal de comunicação, ou seja, é a URL acessada para executar alguma função no servidor. No diagrama acima, o <em>endpoint</em> é <code class="highlighter-rouge">http://coolhomes.api.com/home</code>.</p>
+
+<p>Se considerarmos que, ao acessar uma URL, o servidor executa uma função específica, então um <em>endpoint</em> é o endereço de uma função na rede. Desta maneira, acessar a URL <code class="highlighter-rouge">http://coolhomes.api.com/home?limit=5</code> seria como invocar uma função <em>home</em> com o parâmetro <em>limit</em> igual a 5: <code class="highlighter-rouge">home(limit=5)</code>.</p>
+
+<p>Uma API pode retornar diversos tipos de repostas (que é o retorno da função executada internamente no servidor). Na arquitetura REST, os objetos retornados são comumente serializados como <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>, que é a representação do objeto na forma de uma <em>string</em>. Desta forma, o cliente consegue receber e interpretar tipos de dados arbitrários independentemente da linguagem de programação utilizada.</p>
+
+<div class="alert alert-info">
+  Alguns autores definem <b>endpoint</b> como a função executada internamente pelo servidor quando recebe a chamada de alguma rota. Mas, considerando que um <i>endpoint</i> é o ponto terminal de um canal de comunicação, ambas as definições podem ser usadas, pois, do lado o cliente, o ponto final é a URL e, do lado do servidor, é a função.
+</div>
+
+<p>Além disso, notamos que o fluxo de comunicação entre dois sistemas é: o cliente acessa uma URL, isso faz com que o servidor execute a função relacionada àquela rota e retorne a resposta para o cliente.</p>
+
+<h2 id="a-api-do-sdss">A API do SDSS</h2>
+
+<p>Depois desta breve introdução sobre API’s, queremos agora saber como usamos a API do SDSS para obter as imagens. Lendo a documentação do SDSS, vemos que devemos usar o seguinte endereço para o  <em>endpoint</em>:</p>
+
+<ul>
+  <li><strong>endpoint</strong>: <code class="highlighter-rouge">http://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getJpeg</code></li>
+</ul>
+
+<p>Além disso, vemos que esta URL aceita os seguintes parâmetros:</p>
+
+<div class="table-wrapper">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Parâmetro</th>
+        <th>Descrição</th>
+        <th style="white-space: nowrap;">Valor padrão</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ra</td>
+        <td>Ascensão Reta (em graus)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>dec</td>
+        <td>Declinação (em graus)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>scale</td>
+        <td>Escala da imagem (em arsec por pixel)</td>
+        <td>0.4</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>Altura da imagem (em pixels)</td>
+        <td>512</td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>Largura da imagem (em pixels)</td>
+        <td>512</td>
+      </tr>
+      <tr>
+        <td>opt</td>
+        <td>Uma string com as overlays que serão carregadas sobre a imagem</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Os parâmtros <strong>ra</strong> e <strong>dec</strong> são obrigatórios, já os demais são opcionais, visto que têm um valor padrão.</p>
+
+<p>Neste exemplo, usaremos os 5 primeiros parâmetros, o sexto parâmetro <code class="highlighter-rouge">opt</code> são as overlays que podem ser opcionalmente carregadas nas imagens, são as mesmas overlays disponíveis quando se obtém as imagens pelo site do SkyServer.</p>
+
+<h2 id="exemplo-de-requisições">Exemplo de requisições</h2>
+
+<p>Para ilustrar nosso problema, vamos fazer algumas <strong>requisições</strong> para API do SDSS para ver qual sua <strong>resposta</strong>.</p>
+
+<p>Imagine que temos 3 objetos identificados pela sua ascensão reta e declinação, como na tabela abaixo,  e queiramos obter suas respectivas imagens.</p>
+
+<div class="table-wrapper">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Objeto</th>
+        <th>RA</th>
+        <th>DEC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>19.023342</td>
+        <td>-0.014911</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>24.398026</td>
+        <td>-0.135213</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>19.196877</td>
+        <td>-0.103266</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Para todos os objetos usaremos <code class="highlighter-rouge">width=180</code>, <code class="highlighter-rouge">height=180</code> e <code class="highlighter-rouge">scale=0.3</code>. A tabela abaixo mostra a URL de <strong>requisição</strong> com os parâmetros que definimos e sua respectiva <strong>resposta</strong>.</p>
+
+<div class="table-wrapper">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th>Objeto</th>
+        <th>Resposta</th>
+        <th>Requisição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="align-middle">1</td>
+        <td class="align-middle"><img src="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.023342&amp;dec=-0.014911&amp;width=180&amp;height=180&amp;scale=.3" /></td>
+        <td class="align-middle"><a href="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.023342&amp;dec=-0.014911&amp;width=180&amp;height=180&amp;scale=.3">https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.023342&amp;dec=-0.014911&amp;width=180&amp;height=180&amp;scale=.3</a></td>
+      </tr>
+      <tr>
+        <td class="align-middle">2</td>
+        <td class="align-middle"><img src="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=24.398026&amp;dec=-0.135213&amp;width=180&amp;height=180&amp;scale=.3" /></td>
+        <td class="align-middle"><a href="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=24.398026&amp;dec=-0.135213&amp;width=180&amp;height=180&amp;scale=.3">https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=24.398026&amp;dec=-0.135213&amp;width=180&amp;height=180&amp;scale=.3</a></td>
+      </tr>
+      <tr>
+        <td class="align-middle">3</td>
+        <td class="align-middle"><img src="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.196877&amp;dec=-0.103266&amp;width=180&amp;height=180&amp;scale=.3" /></td>
+        <td class="align-middle"><a href="https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.196877&amp;dec=-0.103266&amp;width=180&amp;height=180&amp;scale=.3">https://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg?ra=19.196877&amp;dec=-0.103266&amp;width=180&amp;height=180&amp;scale=.3</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Observando a tabela acima, percebemos que a requisição é composta de dois parâmetros principais: <strong>RA</strong> e <strong>DEC</strong>, e a resposta é uma imagem <strong>jpeg</strong>.</p>
+
+<h1 id="metodologia">Metodologia</h1>
+
+<p>Agora que já entendemos o mecanismo da API do SDSS, da mesma forma que obtemos imagens de 3 objetos  é bem simples pensar em como implementar um programa que faz download de todos os objetos de um <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">DataFrame</a> do <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">python</a>, por exemplo.</p>
+
+<p>Podemos baixar as imagens que desejamos em dois passos:</p>
+
+<ul>
+  <li>Iterar sobre uma <a href="https://en.wikipedia.org/wiki/Collection_(abstract_data_type)">coleção</a> de dados (DataFrame, Lista, etc.) e montar as URL’s para fazer a requisição.</li>
+  <li>Salvar a resposta da API (imagem) no disco.</li>
+</ul>
+
+<div class="alert alert-info">
+  Aqui usaremos a linguagem <b>Python</b> para escrever nosso programa, mas ele poderia ser escrito em qualquer linguagem de programação que tenha uma biblioteca de abstração da camada de rede para enviar e receber pacotes usando o protocolo HTTP.
+</div>
+
+<h1 id="implementação">Implementação</h1>
+
+<p>Primeiro, vamos implementar uma função que recebe os parâmetros aceitos pela rota da API do SDSS e montar nossa URL.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create_request_url</span><span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">.3</span><span class="p">):</span>
+  <span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s">'http://skyserver.sdss.org/dr15/SkyServerWS/ImgCutout/getjpeg'</span>
+  <span class="k">return</span> <span class="n">f</span><span class="s">'{ENDPOINT}?ra={ra}&amp;dec={dec}&amp;width={width}&amp;height={height}&amp;scale={scale}'</span>
+</code></pre></div></div>
+
+<p>A função <code class="highlighter-rouge">create_request_url</code> possui dois parâmetros obrigatórios: <strong>ra</strong> e <strong>dec</strong>. Os demais são opicionais.</p>
+
+<p>Agora vamos implementar uma função que receba uma URL, faça a <em>requisição</em> e salve a <em>resposta</em> (imagem) no disco. Para isso, vamos utilizar a biblioteca <a href="https://requests.readthedocs.io/en/master/">requests</a>, que é responsável pelo envio e recebimento de pacotes através da rede.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+  <span class="n">output_path</span> <span class="o">=</span> <span class="s">'/content/images/'</span>
+  <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="s">'{output_path}/{filename}'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+      <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s">'Image {filename} downloaded'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A função <code class="highlighter-rouge">download_image</code> baixa <strong>uma</strong> imagem, que é a resposta da URL acessada. Mas, na maioria das vezes, não queremos baixar apenas uma imagem, mas várias. Então vamos implementar uma terceira função que chama a função acima para cada linha de um <code class="highlighter-rouge">DataFrame</code> do pandas.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="k">def</span> <span class="nf">batch_download</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">create_request_url</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">'ra'</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">'dec'</span><span class="p">])</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">f</span><span class="s">'{int(row["id"])}.jpg'</span>
+    <span class="n">download_image</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A função <code class="highlighter-rouge">batch_download</code> itera sobre um DataFrame e chama a função <code class="highlighter-rouge">download_image</code> para cada objeto da coleção recebida como parâmetro.</p>
+
+<p>Para ilustrar este exemplo, vamos usar um dataset de amostra com 50 objetos. Estes dados estão num arquivo CSV que contém informações de RA e DEC de cada objeto. O trecho de código abaixo carrega o dataset e chama a função <code class="highlighter-rouge">batch_download</code>, nossa função principal.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'https://iagml.github.io/assets/example_data.csv'</span><span class="p">)</span>
+<span class="n">batch_download</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A figura abaixo mostra as imagens baixadas pelo programa.</p>
+
+<p><img src="/assets/uploads/galaxy_grid.jpg" class="d-block mx-auto" width="860px" style="max-width: 100%" /></p>
+
+<h1 id="jupyter-notebooks">Jupyter Notebooks</h1>
+
+<p>Um exemplo deste código está disponível no Google Colabs e pode ser acessado pelo link abaixo</p>
+
+<p><a href="https://colab.research.google.com/drive/1tlAH_ZOyezSfHkVTt85aum7n5OgQrCmE">Simple SDSS Image Download</a> <a href="https://colab.research.google.com/drive/1tlAH_ZOyezSfHkVTt85aum7n5OgQrCmE"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Google Colabs" /></a></p>
+
+<p>Abaixo tem outro exemplo um pouco mais complexo, mas com performance muito superior pois utiliza <a href="https://en.wikipedia.org/wiki/Concurrent_computing">computação concorrente</a> para baixar as imagens. Isto é, ao invés de baixar as imagens sequencialmente, esperando uma imagem baixar para depois baixar a próxima, o programa cria vários <a href="https://en.wikipedia.org/wiki/Multiprocessing">processos paralelos</a> que baixam várias imagens <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">simultaneamente</a>.</p>
+
+<p><a href="https://colab.research.google.com/drive/11aNTyapkYI1drPynZemDG-WhrNPkPMcM">SDSS Stamps</a> <a href="https://colab.research.google.com/drive/11aNTyapkYI1drPynZemDG-WhrNPkPMcM"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Google Colabs" /></a></p>
+
+
+  <div class="mt-4 py-5">
+    <div id="disqus_thread"></div>
+<script>
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://iagml.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+  </div>
+</div>
+
+  </div>
+
+  <footer class="text-light">
+  <div class="container px-4 px-md-0">
+    <div class="row">
+      <div class="col-12 col-md-6 pr-lg-5">
+        <h6>IAGML</h6>
+        <p>
+          Sistemas inteligentes para descoberta em Astronomia:
+          Inteligência Artificial
+          para a extração de informações
+          em grandes levantamentos do céu (surveys).
+        </p>
+
+        <h6 class="mt-4">Apoio</h6>
+        <ul class="list-unstyled list-inline footer-logos">
+          <li class="list-inline-item">
+            <a href="http://www.iag.usp.br">
+              <img class="hover-img" src="/assets/img/iag_logo.png" data-toggle="tooltip" height="42px" alt="IAG Logo"
+                title="Instituto de Astronomia, Geofísica e Ciências Atmosféricas">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="http://prp.usp.br">
+              <img class="hover-img" src="/assets/img/prp_logo.png" data-toggle="tooltip" height="42px" alt="PRP Logo"
+                title="Pró Reitoria de Pesquisa">
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="http://usp.br">
+              <img class="hover-img" src="/assets/img/usp_logo.png" data-toggle="tooltip" height="42px" alt="USP Logo"
+                title="Universidade de São Paulo">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-4 col-md-3">
+        <h6>Explore</h6>
+        <ul class="list-unstyled">
+          
+          <li><a href="/projeto/">Projeto</a></li>
+          
+          <li><a href="/recursos/">Recursos</a></li>
+          
+          <li><a href="/surveys/">Surveys</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/admin/">Área de Membros</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-8 col-md-3">
+        <h6>Contato</h6>
+        <p class="text-sm ">
+          IAG - Instituto de Astronomia, Geofísica e Ciências Atmosféricas <br>
+          Universidade de São Paulo <br>
+          Rua do Matão, 1226 <br>
+          Cidade Universitária <br>
+          São Paulo - SP <br>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid footer-line text-center">
+    <small>
+      &copy; 2019-2021 <a href="http://www.iag.usp.br">IAG/USP</a> &bull;
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> <br />
+      Last build: 13/07/2021 21:23:31
+      
+      
+      &bull; Commit:
+      <a href="https://github.com/iagml/website/commit/04377b123a364e5c512ce1acbe307a4a2e57fb9b">04377b12</a>
+      <a href="https://github.com/iagml/website"><i class="fab fa-github"></i></a>
+      
+    </small>
+  </div>
+</footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+
+</html>
